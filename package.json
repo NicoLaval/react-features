@@ -3,6 +3,8 @@
 	"version": "0.1.0",
 	"dependencies": {
 		"axios": "^0.19.0",
+		"jsoneditor": "^9.0.2",
+		"jsoneditor-react": "^3.0.0",
 		"node-sass": "^4.13.0",
 		"react": "^16.0.0",
 		"react-dom": "^16.0.0",
@@ -12,6 +14,8 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"source-map-explorer": "source-map-explorer 'build/static/js/*.js' --html bundle-report/source-map-explorer.html",
+		"analyze": "npm run build && npm run source-map-explorer",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
@@ -46,6 +50,7 @@
 		"eslint-plugin-prettier": "^3.1.1",
 		"eslint-plugin-react": "^7.16.0",
 		"eslint-plugin-react-hooks": "^2.3.0",
-		"prettier": "^1.19.1"
+		"prettier": "^1.19.1",
+		"source-map-explorer": "^2.4.2"
 	}
 }

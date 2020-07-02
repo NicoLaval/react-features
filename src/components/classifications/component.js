@@ -20,7 +20,7 @@ const Classifications = () => {
 			.then(() => {
 				setLoading(false);
 			});
-	}, [counter]);
+	}, []);
 
 	if (loading) return <div>Loading...</div>;
 

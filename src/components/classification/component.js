@@ -24,7 +24,7 @@ const Classification = props => {
 			.then(() => {
 				setLoading(false);
 			});
-	}, [code, counter]);
+	}, [code]);
 
 	if (loading) return <div>Loading...</div>;
 
