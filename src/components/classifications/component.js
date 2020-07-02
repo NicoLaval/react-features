@@ -1,16 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { CounterContext } from 'contexts/count-context';
+import { useRecoilState } from 'recoil';
 import { getClassifications } from 'api';
 import { getCounterText } from 'utils/counter';
 import { cache } from 'utils/cache';
+import { counterState } from 'state/counter';
 
 const Classifications = () => {
-	const classifications = getClassifications.read(cache);
+	const [counter] = useRecoilState(counterState);
 
-	const {
-		state: { counter },
-	} = useContext(CounterContext);
+	const classifications = getClassifications.read(cache);
 
 	return (
 		<div>

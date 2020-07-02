@@ -1,20 +1,15 @@
-import React, { lazy, useContext } from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { CounterContext } from 'contexts/count-context';
 import { getClassification } from 'api';
 import { getCounterText } from 'utils/counter';
 import { useFetch } from 'utils/fetch-hook';
-
-const JSONEditor = lazy(() => import('components/common/json-editor'));
+import { useRecoilState } from 'recoil';
+import { counterState } from 'state/counter';
 
 const Classification = () => {
 	const { code } = useParams();
 	const { data: classification, loading } = useFetch(getClassification, code);
-
-	const {
-		state: { counter },
-		dispatch,
-	} = useContext(CounterContext);
+	const [counter, setCounter] = useRecoilState(counterState);
 
 	if (loading) return <div>Loading...</div>;
 
@@ -33,16 +28,13 @@ const Classification = () => {
 
 	return (
 		<div>
-			<JSONEditor />
 			<h1 className="centered">{label}</h1>
 			<label htmlFor={`plus-${code}`}>
 				<button
 					type="button"
 					name={`plus-${code}`}
 					onClick={() => {
-						dispatch({
-							payload: { ...counter, [code]: count ? count + 1 : 1 },
-						});
+						setCounter({ ...counter, [code]: count ? count + 1 : 1 });
 					}}
 				>
 					Like

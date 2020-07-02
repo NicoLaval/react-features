@@ -5,13 +5,13 @@ import {
 	Route,
 	Redirect,
 } from 'react-router-dom';
-import { CounterContextProvider } from 'contexts/count-context';
 import Classifications from 'components/classifications';
 import Classification from 'components/classification';
+import { RecoilRoot } from 'recoil';
 
 const Root = () => (
 	<div className="container">
-		<CounterContextProvider>
+		<RecoilRoot>
 			<Router>
 				<Switch>
 					<Route path="/classifications" component={Classifications} />
@@ -19,7 +19,7 @@ const Root = () => (
 					<Redirect to="/classifications" />
 				</Switch>
 			</Router>
-		</CounterContextProvider>
+		</RecoilRoot>
 	</div>
 );
 
