@@ -1,31 +1,23 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { CounterContext } from 'contexts/count-context';
 import { getClassification } from 'api';
-import buildExtract from 'utils/build-extract';
 import { getCounterText } from 'utils/counter';
+import { useFetch } from 'utils/fetch-hook';
 
-const Classification = props => {
-	const [classification, setClassification] = useState({});
-	const [loading, setLoading] = useState(true);
-
+const Classification = () => {
 	const { code } = useParams();
+	const { data: classification, loading, error } = useFetch(
+		getClassification,
+		code
+	);
 
 	const {
 		state: { counter },
 		dispatch,
 	} = useContext(CounterContext);
 
-	useEffect(() => {
-		getClassification(code)
-			.then(c => {
-				setClassification(c);
-			})
-			.then(() => {
-				setLoading(false);
-			});
-	}, [code]);
-
+	if (error) return <div>Error...</div>;
 	if (loading) return <div>Loading...</div>;
 
 	const {
