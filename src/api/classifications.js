@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getCode } from 'utils/classifications';
+import { createResource } from 'react-cache';
 
 /**
  * Classifications
@@ -22,7 +23,7 @@ const getClassificationsURL = () =>
 		classificationsQuery()
 	)}`;
 
-export const getClassifications = () =>
+export const getClassifications = createResource(() =>
 	axios
 		.get(getClassificationsURL(), {
 			headers: { Accept: 'application/json;charset=utf-8' },
@@ -32,7 +33,8 @@ export const getClassifications = () =>
 				intitule: libelle.value,
 				code: getCode(nomenclature.value),
 			}))
-		);
+		)
+);
 
 /**
  * Classification

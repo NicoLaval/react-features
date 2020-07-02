@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { lazy, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { CounterContext } from 'contexts/count-context';
 import { getClassification } from 'api';
 import { getCounterText } from 'utils/counter';
 import { useFetch } from 'utils/fetch-hook';
+
+const JSONEditor = lazy(() => import('components/common/json-editor'));
 
 const Classification = () => {
 	const { code } = useParams();
@@ -31,6 +33,7 @@ const Classification = () => {
 
 	return (
 		<div>
+			<JSONEditor />
 			<h1 className="centered">{label}</h1>
 			<label htmlFor={`plus-${code}`}>
 				<button

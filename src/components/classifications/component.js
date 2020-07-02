@@ -3,16 +3,14 @@ import { Link } from 'react-router-dom';
 import { CounterContext } from 'contexts/count-context';
 import { getClassifications } from 'api';
 import { getCounterText } from 'utils/counter';
-import { useFetch } from 'utils/fetch-hook';
+import { cache } from 'utils/cache';
 
 const Classifications = () => {
-	const { data: classifications, loading } = useFetch(getClassifications);
+	const classifications = getClassifications.read(cache);
 
 	const {
 		state: { counter },
 	} = useContext(CounterContext);
-
-	if (loading) return <div>Loading...</div>;
 
 	return (
 		<div>
