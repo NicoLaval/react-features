@@ -14,7 +14,6 @@ const Classifications = () => {
 		state: { counter },
 	} = useContext(CounterContext);
 
-	if (error) return <div>Error</div>;
 	if (loading) return <div>Loading...</div>;
 
 	return (

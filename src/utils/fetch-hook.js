@@ -14,7 +14,9 @@ export const useFetch = (getter, params) => {
 				setLoading(false);
 			})
 			.catch(err => {
-				setError(err);
+				setError(() => {
+					throw err;
+				});
 			});
 	}, [getter, params]);
 

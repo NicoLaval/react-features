@@ -17,7 +17,6 @@ const Classification = () => {
 		dispatch,
 	} = useContext(CounterContext);
 
-	if (error) return <div>Error...</div>;
 	if (loading) return <div>Loading...</div>;
 
 	const {
