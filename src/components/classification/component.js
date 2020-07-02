@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { CounterContext } from 'contexts/count-context';
 import { getClassification } from 'api';
 import buildExtract from 'utils/build-extract';
@@ -9,7 +9,7 @@ const Classification = props => {
 	const [classification, setClassification] = useState({});
 	const [loading, setLoading] = useState(true);
 
-	const code = buildExtract('code')(props);
+	const { code } = useParams();
 
 	const {
 		state: { counter },
