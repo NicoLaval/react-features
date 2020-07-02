@@ -6,9 +6,7 @@ import { getCounterText } from 'utils/counter';
 import { useFetch } from 'utils/fetch-hook';
 
 const Classifications = () => {
-	const { data: classifications, loading, error } = useFetch(
-		getClassifications
-	);
+	const { data: classifications, loading } = useFetch(getClassifications);
 
 	const {
 		state: { counter },

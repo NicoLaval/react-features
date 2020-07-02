@@ -8,7 +8,6 @@ import {
 import { CounterContextProvider } from 'contexts/count-context';
 import Classifications from 'components/classifications';
 import Classification from 'components/classification';
-import FetchErrorBoundary from './errors/fetch';
 
 const Root = () => (
 	<div className="container">

@@ -7,10 +7,7 @@ import { useFetch } from 'utils/fetch-hook';
 
 const Classification = () => {
 	const { code } = useParams();
-	const { data: classification, loading, error } = useFetch(
-		getClassification,
-		code
-	);
+	const { data: classification, loading } = useFetch(getClassification, code);
 
 	const {
 		state: { counter },

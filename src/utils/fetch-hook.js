@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 export const useFetch = (getter, params) => {
 	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const setError = useState(null)[1];
 
 	useEffect(() => {
 		getter(params)
@@ -18,7 +18,7 @@ export const useFetch = (getter, params) => {
 					throw err;
 				});
 			});
-	}, [getter, params]);
+	}, [getter, params, setError]);
 
-	return { data, loading, error };
+	return { data, loading };
 };
